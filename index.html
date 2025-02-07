@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com;">
+  <title>Futuristic Data Saver</title>
+  <!-- Google Fonts: Audiowide -->
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
+  <!-- CodeMirror CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css" />
+  <!-- Highlight.js CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css" />
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Futuristic Data Saver</h1>
+      <p>Shock the universe with cutting‑edge data management!</p>
+    </header>
+
+    <!-- Form Section -->
+    <section class="form-section">
+      <h2>Add New Entry</h2>
+      <form id="dataForm">
+        <!-- Category Dropdown -->
+        <div class="form-group">
+          <label for="category">Select Category:</label>
+          <select id="category" required>
+            <option value="">-- Select Category --</option>
+            <option value="image">Image</option>
+            <option value="password">Password</option>
+            <option value="note">Note</option>
+            <option value="code">Code</option>
+            <option value="link">Link</option>
+            <option value="event">Event</option>
+            <option value="contact">Contact</option>
+            <option value="task">Task</option>
+            <option value="document">Document</option>
+          </select>
+        </div>
+
+        <!-- Dynamic Fields for Image Category -->
+        <div id="fields-image" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="imageFile">Upload Image:</label>
+            <input type="file" id="imageFile" accept="image/*" />
+          </div>
+          <div class="form-group">
+            <label for="imageType">Image Type:</label>
+            <input type="text" id="imageType" placeholder="e.g., Landscape, Portrait, Meme" />
+          </div>
+        </div>
+
+        <!-- Dynamic Fields for Password Category -->
+        <div id="fields-password" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="passwordLabel">Password Label:</label>
+            <input type="text" id="passwordLabel" placeholder="Enter a label for this password" />
+          </div>
+          <div class="form-group">
+            <label for="passwordInput">Enter Password:</label>
+            <div class="password-wrapper">
+              <input type="password" id="passwordInput" placeholder="Enter Password" />
+              <span id="togglePassword" class="eye-icon" title="Show/Hide Password">👁</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Fields for Note Category -->
+        <div id="fields-note" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="noteTitle">Title:</label>
+            <input type="text" id="noteTitle" placeholder="Note Title" />
+          </div>
+          <div class="form-group">
+            <label for="noteSubtitle">Subtitle:</label>
+            <input type="text" id="noteSubtitle" placeholder="Note Subtitle" />
+          </div>
+          <div class="form-group">
+            <label for="noteTag">Tag:</label>
+            <input type="text" id="noteTag" placeholder="#tag" value="#" />
+          </div>
+          <div class="form-group">
+            <label for="noteContent">Content:</label>
+            <textarea id="noteContent" rows="4" placeholder="Write your note here..."></textarea>
+          </div>
+        </div>
+
+        <!-- Dynamic Fields for Code Category -->
+        <div id="fields-code" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="codeLanguage">Code Language:</label>
+            <select id="codeLanguage">
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="java">Java</option>
+              <option value="cpp">C++</option>
+              <option value="htmlmixed">HTML</option>
+              <option value="css">CSS</option>
+              <option value="shopify">Shopify</option>
+              <option value="bootstrap">Bootstrap</option>
+              <option value="tailwind">Tailwind</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="codeEditor">Paste Your Code:</label>
+            <textarea id="codeEditor" placeholder="Paste your code here..."></textarea>
+          </div>
+        </div>
+
+        <!-- Dynamic Fields for Link Category -->
+        <div id="fields-link" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="linkURL">Link URL:</label>
+            <input type="url" id="linkURL" placeholder="https://example.com" />
+          </div>
+          <div class="form-group">
+            <label for="linkTitle">Link Title:</label>
+            <input type="text" id="linkTitle" placeholder="Enter a title for the link" />
+          </div>
+          <div class="form-group">
+            <label for="linkDescription">Link Description:</label>
+            <textarea id="linkDescription" rows="3" placeholder="Enter a description for the link"></textarea>
+          </div>
+        </div>
+
+        <!-- Dynamic Fields for Event Category -->
+        <div id="fields-event" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="eventTitle">Event Title:</label>
+            <input type="text" id="eventTitle" placeholder="Enter event title" />
+          </div>
+          <div class="form-group">
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate" />
+          </div>
+          <div class="form-group">
+            <label for="eventTime">Event Time:</label>
+            <input type="time" id="eventTime" />
+          </div>
+          <div class="form-group">
+            <label for="eventLocation">Event Location:</label>
+            <input type="text" id="eventLocation" placeholder="Enter location" />
+          </div>
+        </div>
+
+        <!-- Dynamic Fields for Contact Category -->
+        <div id="fields-contact" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="contactName">Contact Name:</label>
+            <input type="text" id="contactName" placeholder="Enter contact name" />
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Contact Email:</label>
+            <input type="email" id="contactEmail" placeholder="Enter email" />
+          </div>
+          <div class="form-group">
+            <label for="contactPhone">Contact Phone:</label>
+            <input type="tel" id="contactPhone" placeholder="Enter phone number" />
+          </div>
+          <div class="form-group">
+            <label for="contactAddress">Contact Address:</label>
+            <textarea id="contactAddress" rows="3" placeholder="Enter address"></textarea>
+          </div>
+        </div>
+
+        <!-- Dynamic Fields for Task Category -->
+        <div id="fields-task" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="taskTitle">Task Title:</label>
+            <input type="text" id="taskTitle" placeholder="Enter task title" />
+          </div>
+          <div class="form-group">
+            <label for="taskDescription">Task Description:</label>
+            <textarea id="taskDescription" rows="3" placeholder="Describe the task"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="taskDue">Due Date:</label>
+            <input type="date" id="taskDue" />
+          </div>
+        </div>
+
+        <!-- Dynamic Fields for Document Category -->
+        <div id="fields-document" class="dynamic-field" style="display:none;">
+          <div class="form-group">
+            <label for="documentTitle">Document Title:</label>
+            <input type="text" id="documentTitle" placeholder="Enter document title" />
+          </div>
+          <div class="form-group">
+            <label for="documentFile">Upload Document:</label>
+            <input type="file" id="documentFile" accept=".pdf,.doc,.docx,.txt" />
+          </div>
+          <div class="form-group">
+            <label for="documentDescription">Document Description:</label>
+            <textarea id="documentDescription" rows="3" placeholder="Enter document description"></textarea>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit">Save Entry</button>
+      </form>
+    </section>
+
+    <!-- List Section -->
+    <section class="list-section">
+      <h2>Saved Entries</h2>
+
+      <!-- Search Area -->
+      <div class="search-area">
+        <input type="text" id="searchInput" placeholder="Search entries..." />
+        <select id="searchCategory">
+          <option value="all">All Categories</option>
+          <option value="image">Image</option>
+          <option value="password">Password</option>
+          <option value="note">Note</option>
+          <option value="code">Code</option>
+          <option value="link">Link</option>
+          <option value="event">Event</option>
+          <option value="contact">Contact</option>
+          <option value="task">Task</option>
+          <option value="document">Document</option>
+        </select>
+        <button id="searchBtn" type="button">Search</button>
+      </div>
+
+      <!-- Action Area -->
+      <div class="action-area">
+        <div class="select-all">
+          <input type="checkbox" id="selectAll" />
+          <label for="selectAll">Select All</label>
+        </div>
+        <div class="action-buttons">
+          <button id="deleteSelected" type="button">Delete Selected</button>
+          <button id="deleteAll" type="button">Delete All</button>
+        </div>
+      </div>
+      <ul id="dataList"></ul>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Futuristic Data Saver &mdash; Developed with ♥ by Web Developer Advanced</p>
+  </footer>
+
+  <!-- CodeMirror JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+  <!-- Highlight.js JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>

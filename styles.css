@@ -1,0 +1,277 @@
+/* Reset and Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #121212;
+  color: #e0e0e0;
+  font-family: 'Audiowide', sans-serif;
+  padding: 20px;
+}
+
+/* Container with Gradient Border */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid;
+  border-image: linear-gradient(45deg, #8e2de2, #4a00e0) 1;
+  box-shadow: 0 0 20px rgba(142,45,226, 0.5);
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-shadow: 0 0 10px #8e2de2, 0 0 20px #4a00e0;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #cccccc;
+}
+
+/* Form Section */
+.form-section {
+  margin-bottom: 40px;
+}
+
+.form-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #8e2de2;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+  color: #ffffff;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"],
+input[type="url"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  background: #2a2a2a;
+  border: 1px solid #4a00e0;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 1em;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #888;
+}
+
+/* Custom Checkbox Styling */
+.select-all input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #2a2a2a;
+  border: 2px solid #4a00e0;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.select-all input[type="checkbox"]:checked {
+  background-color: #4a00e0;
+  border-color: #4a00e0;
+}
+
+.select-all input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 0;
+  left: 4px;
+  color: #1e1e1e;
+  font-size: 18px;
+}
+
+/* Password Wrapper */
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(45deg, #8e2de2, #4a00e0);
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #4a00e0, #8e2de2);
+}
+
+/* Action Area in List Section */
+.action-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.action-buttons button {
+  width: auto;
+  margin-left: 10px;
+}
+
+/* Search Area */
+.search-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.search-area input[type="text"] {
+  flex: 1;
+}
+
+.search-area select {
+  flex: 0.5;
+}
+
+/* List Section */
+.list-section h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #8e2de2;
+}
+
+#dataList {
+  list-style: none;
+  padding: 0;
+}
+
+.data-item {
+  background: #2a2a2a;
+  border: 1px solid #4a00e0;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-header h3 {
+  font-size: 1.4em;
+  color: #ffffff;
+}
+
+.item-header .delete-single {
+  background: #e60073;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.item-header .delete-single:hover {
+  background: #cc0052;
+}
+
+.data-content {
+  margin-top: 10px;
+}
+
+.code-block {
+  background: #1e1e1e;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9em;
+}
+
+.data-item img,
+.data-item .document-file {
+  max-width: 200px;
+  max-height: 200px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+/* Hashtag Styling for Note Tag */
+.note-tag {
+  color: #e60073;
+  font-weight: bold;
+}
+
+/* Dynamic Field Animation */
+.dynamic-field {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 15px 0;
+  border-top: 1px solid #4a00e0;
+  font-size: 0.9em;
+  color: #cccccc;
+}
