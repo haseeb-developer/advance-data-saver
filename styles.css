@@ -108,7 +108,35 @@ textarea::placeholder {
 }
 
 .select-all input[type="checkbox"]:checked::after {
-  content: '✓';
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 4px;
+  color: #1e1e1e;
+  font-size: 18px;
+}
+
+.data-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #2a2a2a;
+  border: 2px solid #4a00e0;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.data-item input[type="checkbox"]:checked {
+  background-color: #4a00e0;
+  border-color: #4a00e0;
+}
+
+.data-item input[type="checkbox"]:checked::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 4px;
@@ -204,9 +232,6 @@ button:hover {
 }
 
 .item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 10px;
 }
 
